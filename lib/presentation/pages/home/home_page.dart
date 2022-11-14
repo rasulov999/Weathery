@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:weathery/presentation/utils/images.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,12 +19,12 @@ class _HomePageState extends State<HomePage> {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/img.png"),fit: BoxFit.cover
+            image: AssetImage("assets/images/bg_img.png"),fit: BoxFit.cover
           )
         ),
-        child: Column(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/img_1.png"),
+            Image.asset(AppImages.house)
           ],
         ),
       ),
