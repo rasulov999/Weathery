@@ -4,19 +4,19 @@ import 'package:weathery/presentation/utils/colors.dart';
 
 
 
+
 class MainAppBar extends StatelessWidget {
   const MainAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding:  EdgeInsets.only(top: 40, bottom: 22),
+    return Padding(padding:  EdgeInsets.only(top: 40.h, bottom: 22.h).r,
       child: Container(
         width: double.infinity,
-        height: 89,
+        height: 89.h,
         color: AppColors.c_2C303F,
         child: Row(
           children: [
-          
           ],
         ),
       ),

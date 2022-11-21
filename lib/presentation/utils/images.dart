@@ -1,5 +1,4 @@
 class AppImages {
-  
   //PNG
 
   static const background = "assets/images/bg_img.png";
@@ -17,6 +16,8 @@ class AppImages {
   static const folder = "assets/svg/folder_icon.svg";
   static const location = "assets/svg/location_icon.svg";
   static const search = "assets/svg/search_icon.svg";
-  static const settings = "assets/svg/settings_icon.svg";
-  
+
+  //WeatherItems.SVG
+
+  static const rainSvg = "assets/images/svg/rainy.svg";
 }

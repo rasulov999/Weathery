@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weathery/presentation/utils/colors.dart';
 import 'package:weathery/presentation/utils/images.dart';
 import 'package:weathery/presentation/views/navbar/forcast/forcast_page.dart';
 import 'package:weathery/presentation/views/navbar/location/location_page.dart';
 import 'package:weathery/presentation/views/navbar/search/search_page.dart';
-import 'package:weathery/presentation/views/navbar/settings/settings_page.dart';
+
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -21,17 +21,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const LocationPage(),
     const SearchPage(),
     const ForcastPage(),
-  const SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: pages[selectedIndex],
       bottomNavigationBar: ClipRRect(
-        borderRadius:  BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20),),
+        borderRadius:   BorderRadius.only(topRight: Radius.circular(20.r), 
+        topLeft: Radius.circular(20.r),),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.c_101A39,
-          
            onTap: (int index) {
               setState(() {
                 selectedIndex = index;
@@ -45,8 +44,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 icon: SvgPicture.asset(AppImages.search), label: "Search"),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(AppImages.folder), label: "Forcast"),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(AppImages.settings), label: "Settings"),
           ],
         ),
       ),

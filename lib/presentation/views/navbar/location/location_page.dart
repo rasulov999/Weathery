@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weathery/core/models/weather_model.dart';
 import 'package:weathery/core/service/service.dart';
 import 'package:weathery/presentation/utils/colors.dart';
@@ -30,66 +31,86 @@ class LocationPage extends StatelessWidget {
                     return Center(
                       child: Text(
                         snapshot.error.toString(),
-                        style: const TextStyle(
-                            fontSize: 20,
+                        style:  TextStyle(
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w600,
                             color: Colors.black),
                       ),
                     );
                   }
                   if (snapshot.hasData) {
-                   
                     WeatherModel? model = snapshot.data;
-                     DateTime dateTime =
-                        DateTime.fromMillisecondsSinceEpoch((model?.dt ?? 0)*1000);
-                    return Container(
-                      child: Column(
-                        children: [
-                          Text(
-                            model!.name ?? "",
-                            style: const TextStyle(
-                                color: AppColors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w500),
+                    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(
+                        (model?.dt ?? 0) * 1000);
+                    return Column(
+                      children: [
+                        Text(
+                          model!.name ?? "",
+                          style: TextStyle(
+                              color: AppColors.white,
+                              fontSize: 30.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                          "$dateTime",
+                          style:  TextStyle(
+                              color: AppColors.white,
+                              fontSize: 30.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Image.network(
+                          'http://openweathermap.org/img/w/04d.png',
+                          width: 155.w,
+                          height: 15.h),
+                       SizedBox(height: 20.h,),
+                        Text(
+                          "${model.main?.temp?.round()?? 0}°C",
+                          style:  TextStyle(
+                              color: AppColors.white,
+                              fontSize: 70.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                         SizedBox(height: 38.h,),
+                        weatherItems(
+                            "${model.main?.temp?.round() ?? 0}°C",
+                            "${model.main?.humidity ?? 0}%",
+                            "${model.wind?.speed ?? 0}km/h"),
+                         SizedBox(
+                          height: 30.h,
+                        ),
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: 22.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children:  [
+                              Text(
+                                "Today",
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                              Text(
+                                "View report",
+                                style: TextStyle(
+                                    color: AppColors.c_A7B4E0,
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            ],
                           ),
-                          Text(
-                            "$dateTime",
-                            style: const TextStyle(
-                                color: AppColors.white,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          Image.network(
-                            'http://openweathermap.org/img/w/04d.png',
-                            width: 155,
-                            height: 15,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "${model.main?.temp ?? 0}°C",
-                            style: const TextStyle(
-                                color: AppColors.white,
-                                fontSize: 70,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 38,
-                          ),
-                          weatherItems(
-                              "${model.main?.temp ?? 0}°C",
-                              "${model.main?.humidity ?? 0}%",
-                              "${model.wind?.speed ?? 0}km/h")
-                        ],
-                      ),
+                        ),
+                        // ListView.builder(itemBuilder: (context, index) {
+                        //   return HourlyWeaatherContainer(dt: dt, temp: temp);
+                        // })
+                      ],
                     );
                   }
-                  return const Center(
+                  return  Center(
                     child: Text(
                       "You Are Loser! XA-XA-XA",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.w600,
                           color: Colors.red),
                     ),
@@ -105,26 +126,26 @@ class LocationPage extends StatelessWidget {
 
   Widget weatherItems(String temp, String humidity, String wind) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 36),
+      padding:  EdgeInsets.symmetric(horizontal: 36.w),
       child: SizedBox(
-        height: 46,
+        height: 46.h,
         width: double.infinity,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               children: [
-                const Text(
+                 Text(
                   "Temp",
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w300,
                       color: AppColors.white),
                 ),
                 Text(
                   temp,
-                  style: const TextStyle(
-                      fontSize: 20,
+                  style:  TextStyle(
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.white),
                 ),
@@ -132,17 +153,17 @@ class LocationPage extends StatelessWidget {
             ),
             Column(
               children: [
-                const Text(
+                 Text(
                   "Humidy",
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w300,
                       color: AppColors.white),
                 ),
                 Text(
                   humidity,
-                  style: const TextStyle(
-                      fontSize: 20,
+                  style:  TextStyle(
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.white),
                 ),
@@ -150,17 +171,17 @@ class LocationPage extends StatelessWidget {
             ),
             Column(
               children: [
-                const Text(
+                 Text(
                   "Wind",
                   style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 15.sp,
                       fontWeight: FontWeight.w300,
                       color: AppColors.white),
                 ),
                 Text(
                   wind,
-                  style: const TextStyle(
-                      fontSize: 20,
+                  style:  TextStyle(
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       color: AppColors.white),
                 ),
