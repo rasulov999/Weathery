@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:weathery/presentation/views/navbar/bottom_navbar/bottom_navigationbar.dart';
+import 'package:weathery/views/screens/navbar/bottom_navbar/bottom_navigationbar.dart';
+import 'package:weathery/views/screens/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent, // status bar color
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // status bar color
+    ),
+  );
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -25,11 +28,10 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       minTextAdapt: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false, 
-          home: child);
+        return MaterialApp(debugShowCheckedModeBanner: false, 
+        home: child,);
       },
-      child: const BottomNavigation(),
+      child:  SplashScreen()
     );
   }
 }
