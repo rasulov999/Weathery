@@ -11,9 +11,6 @@ environment:
 dependencies:
   animated_text_kit: ^4.2.2
   cached_network_image: ^3.2.3
-  cupertino_icons: ^1.0.2
-  flutter:
-    sdk: flutter
   flutter_screenutil: ^5.6.0
   flutter_svg: ^1.1.6
   geolocator: ^9.0.2
@@ -22,6 +19,11 @@ dependencies:
   location: ^4.4.0
   lottie: ^2.0.0
   shimmer: ^2.0.0
+  dio: ^4.0.6
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -33,18 +35,34 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
     - assets/svg/
     - assets/lottie/
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: RobotoSlab-Black
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Black.ttf
+    - family: RobotoSlab-Bold
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Bold.ttf
+    - family: RobotoSlab-ExtraBold
+      fonts:
+        - asset: assets\fonts\RobotoSlab-ExtraBold.ttf
+    - family: RobotoSlab-ExtraLight
+      fonts:
+        - asset: assets\fonts\RobotoSlab-ExtraLight.ttf
+    - family: RobotoSlab-Light
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Light.ttf
+    - family: RobotoSlab-Medium
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Medium.ttf
+    - family: RobotoSlab-Regular
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Regular.ttf
+    - family: RobotoSlab-SemiBold
+      fonts:
+        - asset: assets\fonts\RobotoSlab-SemiBold.ttf
+    - family: RobotoSlab-Thin
+      fonts:
+        - asset: assets\fonts\RobotoSlab-Thin.ttf
+   

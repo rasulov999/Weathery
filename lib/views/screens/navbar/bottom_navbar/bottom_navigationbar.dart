@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weathery/views/utils/colors.dart';
-import 'package:weathery/views/utils/images.dart';
+import 'package:weathery/utils/colors.dart';
+import 'package:weathery/utils/images.dart';
 import 'package:weathery/views/screens/navbar/forcast/forcast_page.dart';
 import 'package:weathery/views/screens/navbar/location/location_page.dart';
 import 'package:weathery/views/screens/navbar/search/search_page.dart';
@@ -59,25 +59,24 @@ class _BottomNavigationState extends State<BottomNavigation> {
             onTap: (int index) {
               setState(() {
                 selectedIndex = index;
-                selected = index;
               });
             },
             currentIndex: selectedIndex,
             items: [
               BottomNavigationBarItem(
-                  icon: selected == 0
-                      ? SvgPicture.asset(AppImages.selectedLocation)
-                      : SvgPicture.asset(AppImages.location),
+                  activeIcon: SvgPicture.asset(AppIcons.location,
+                      color: AppColors.white),
+                  icon: SvgPicture.asset(AppIcons.location),
                   label: "My location"),
               BottomNavigationBarItem(
-                  icon: selected == 1
-                      ? SvgPicture.asset(AppImages.selectedSearch)
-                      : SvgPicture.asset(AppImages.search),
+                  activeIcon:
+                      SvgPicture.asset(AppIcons.search, color: AppColors.white),
+                  icon: SvgPicture.asset(AppIcons.search),
                   label: "Search"),
               BottomNavigationBarItem(
-                  icon: selected == 2
-                      ? SvgPicture.asset(AppImages.selectedFolder)
-                      : SvgPicture.asset(AppImages.folder),
+                  activeIcon:
+                      SvgPicture.asset(AppIcons.folder, color: AppColors.white),
+                  icon: SvgPicture.asset(AppIcons.folder),
                   label: "Forcast"),
             ],
           ),

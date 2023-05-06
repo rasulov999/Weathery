@@ -1,5 +1,5 @@
-import 'package:weathery/core/models/daily.dart';
-import 'package:weathery/core/models/hourly.dart';
+import 'package:weathery/models/daily.dart';
+import 'package:weathery/models/hourly.dart';
 
 class HourlyAndDaily {
   num? lat;

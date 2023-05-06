@@ -1,9 +1,10 @@
-import 'package:weathery/core/models/clouds_model.dart';
-import 'package:weathery/core/models/coord_model.dart';
-import 'package:weathery/core/models/main_model.dart';
-import 'package:weathery/core/models/sys_model.dart';
-import 'package:weathery/core/models/weather.dart';
-import 'package:weathery/core/models/wind_model.dart';
+import 'package:weathery/data/models/clouds_model.dart';
+import 'package:weathery/data/models/coord_model.dart';
+import 'package:weathery/data/models/main_model.dart';
+import 'package:weathery/data/models/sys_model.dart';
+import 'package:weathery/data/models/weather.dart';
+import 'package:weathery/data/models/wind_model.dart';
+
 
 class WeatherModel {
   Coord? coord;

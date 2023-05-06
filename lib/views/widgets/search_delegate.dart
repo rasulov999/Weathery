@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weathery/views/utils/images.dart';
+import 'package:weathery/utils/images.dart';
 
 
 class MyWidget extends StatelessWidget {
@@ -28,7 +28,7 @@ class SearchDelegateView extends SearchDelegate {
   Widget? buildLeading(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: SvgPicture.asset(AppImages.search),
+      child: SvgPicture.asset(AppIcons.search),
     );
   }
 

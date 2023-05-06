@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:weathery/models/hourly_and_daily_data_model.dart';
-import 'package:weathery/models/weather_model.dart';
+import 'package:weathery/core/models/hourly_and_daily_data_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:weathery/data/models/weather_model.dart';
 
 class Service {
   static Future<WeatherModel?> getWeatherData({

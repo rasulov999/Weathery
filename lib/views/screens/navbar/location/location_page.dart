@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:weathery/core/models/hourly_and_daily_data_model.dart';
-import 'package:weathery/core/models/weather_model.dart';
+import 'package:weathery/data/models/hourly_and_daily_data_model.dart';
+import 'package:weathery/data/models/weather_model.dart';
 import 'package:weathery/core/service/service.dart';
-import 'package:weathery/views/utils/colors.dart';
+import 'package:weathery/utils/colors.dart';
 import 'package:weathery/views/widgets/hourly_weather_widget.dart';
-import 'package:weathery/views/widgets/main_page_appbar.dart';
+import 'package:weathery/views/screens/navbar/location/widget/location_page_appbar.dart';
 
 class LocationPage extends StatefulWidget {
   LocationPage({super.key, required this.lat, required this.lon});
@@ -21,19 +21,17 @@ class _LocationPageState extends State<LocationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const LocationPageAppbar(),
       body: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         color: AppColors.c_060D26,
         child: Column(
           children: [
-            const MainAppBar(),
             SizedBox(
               child: FutureBuilder(
-                future: Service.getWeatherData(
-                  lat: widget.lat,
-                  lon: widget.lon
-                ),
+                future:
+                    Service.getWeatherData(lat: widget.lat, lon: widget.lon),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
@@ -130,9 +128,7 @@ class _LocationPageState extends State<LocationPage> {
                         SizedBox(
                           child: FutureBuilder(
                             future: Service.getWeatherHourlyAndDailyData(
-                              lat: widget.lat,
-                              lon: widget.lon
-                            ),
+                                lat: widget.lat, lon: widget.lon),
                             builder:
                                 (BuildContext context, AsyncSnapshot snapshot) {
                               if (snapshot.connectionState ==

@@ -1,5 +1,5 @@
-import 'package:weathery/core/models/temp_model.dart';
-import 'package:weathery/core/models/weather.dart';
+import 'package:weathery/data/models/temp_model.dart';
+import 'package:weathery/data/models/weather.dart';
 
 class Daily {
   int? dt;

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:weathery/core/models/hourly_and_daily_data_model.dart';
 import 'package:weathery/core/service/service.dart';
-import 'package:weathery/views/utils/colors.dart';
+import 'package:weathery/models/hourly_and_daily_data_model.dart';
+import 'package:weathery/utils/colors.dart';
 import 'package:weathery/views/widgets/daily_weather_items_container.dart';
+import 'package:weathery/views/widgets/global_appbar.dart';
 import 'package:weathery/views/widgets/hourly_weather_widget.dart';
 import 'package:weathery/views/widgets/shimmers_widget.dart';
 
 class ForcastPage extends StatelessWidget {
-   ForcastPage({super.key, required this.lat, required this.lon});
-late num lat;
+  ForcastPage({super.key, required this.lat, required this.lon});
+  late num lat;
   late num lon;
 
   @override
@@ -18,6 +19,9 @@ late num lat;
     final DateTime dateTime = DateTime.now();
 
     return Scaffold(
+      appBar: const GlobalAppbar(
+        title: "Forecast Report",
+      ),
       body: Container(
         padding: EdgeInsets.only(left: 28.w).r,
         width: double.infinity,
@@ -25,17 +29,6 @@ late num lat;
         color: AppColors.c_060D26,
         child: Column(
           children: [
-            SizedBox(
-              height: 45.h,
-            ),
-            Text(
-              "Forecast Report",
-              style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(height: 30.h),
             Padding(
               padding: EdgeInsets.only(right: 28.w).r,
               child: Row(
@@ -68,11 +61,10 @@ late num lat;
                   SizedBox(
                     child: FutureBuilder(
                       future: Service.getWeatherHourlyAndDailyData(
-                        lat:  lat,
-                        lon: lon
-                      ),
+                          lat: lat, lon: lon),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const SingleChildScrollView(
                             child: MyShimmerLoader(),
                           );
@@ -103,11 +95,18 @@ late num lat;
                                   itemBuilder: (context, index) {
                                     DateTime dateTimee =
                                         DateTime.fromMillisecondsSinceEpoch(
-                                            (model?.hourly?[index].dt ?? 0) * 1000);
+                                            (model?.hourly?[index].dt ?? 0) *
+                                                1000);
                                     return HourlyWeaatherContainer(
-                                     icon: model?.hourly?[index].weather?[0].icon ?? "",
-                                      dt: DateFormat.Hm().format((dateTimee),),
-                                      temp: model?.hourly?[index].temp?.round() ?? 0,
+                                      icon: model?.hourly?[index].weather?[0]
+                                              .icon ??
+                                          "",
+                                      dt: DateFormat.Hm().format(
+                                        (dateTimee),
+                                      ),
+                                      temp:
+                                          model?.hourly?[index].temp?.round() ??
+                                              0,
                                     );
                                   },
                                 ),
@@ -134,12 +133,20 @@ late num lat;
                                   itemBuilder: (context, index) {
                                     DateTime dailyTime =
                                         DateTime.fromMillisecondsSinceEpoch(
-                                            (model?.daily?[index].dt ?? 0) * 1000);
+                                            (model?.daily?[index].dt ?? 0) *
+                                                1000);
                                     return DailyWeatherItems(
-                                        dt: DateFormat.EEEE().format(dailyTime).toString(),
-                                        dt2: DateFormat.MMMMd().format(dailyTime).toString(),
-                                        iconName: model?.daily?[index].weather?[0].icon,
-                                        temp:model?.daily?[index].temp?.day?.round() ?? 0);
+                                        dt: DateFormat.EEEE()
+                                            .format(dailyTime)
+                                            .toString(),
+                                        dt2: DateFormat.MMMMd()
+                                            .format(dailyTime)
+                                            .toString(),
+                                        iconName: model
+                                            ?.daily?[index].weather?[0].icon,
+                                        temp: model?.daily?[index].temp?.day
+                                                ?.round() ??
+                                            0);
                                   },
                                 ),
                               ),

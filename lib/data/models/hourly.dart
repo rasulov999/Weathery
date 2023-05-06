@@ -1,4 +1,4 @@
-import 'package:weathery/core/models/weather.dart';
+import 'package:weathery/data/models/weather.dart';
 
 class Hourly {
   int? dt;
